@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  - let onion=[{onion_weight:"1lb",onion_price:10,onion_color:"White"},{onion_weight:"2lbs",onion_price:30,onion_color:"Red"},{onion_weight:"5lbs",onion_price:60,onion_color:"Pink"}]
+  div(class="container-fluid")
+  div(class="row")
+   each on,index in onion
+    div(class="col-sm-2" onclick =`buy(${index})`) #{on.onion_weight}, #{on.onion_price}, #{on.onion_color}
+
+   script.
+    function buy(i)
+    {
+      alert(`You purchased Item ${i+1}`)
+    } 

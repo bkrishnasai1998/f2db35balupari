@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p My second express server
+  button(type="button", class="btn btn-primary", onclick="doBump()") Press Me for the content  
+
+  div(id="bump") Bump the count
+  script.
+   var count=0;
+   var bump=1;
+   function doBump(){
+    count+=bump;
+    bump+=1;
+    document.getElementById("bump").innerHTML="Count "+count+" Bump "+bump;
+   }
+
+  a(href="onion") Onion page
+  
