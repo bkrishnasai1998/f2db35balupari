@@ -1,8 +1,19 @@
 var onion = require('../models/onion');
 // List of all Onions
-exports.onion_list = function(req, res) {
-res.send('NOT IMPLEMENTED: Onion list');
-};
+exports.onion_list = async function(req, res) {
+    try{
+    theOnions = await onion.find();
+    res.send(theOnions);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
+// List of all Onions
+//exports.onion_list = function(req, res) {
+//res.send('NOT IMPLEMENTED: Onion list');
+//};
 // for a specific Onion.
 exports.onion_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: Onion detail: ' + req.params.id);
