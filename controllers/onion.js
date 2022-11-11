@@ -29,9 +29,9 @@ exports.onion_view_all_Page = async function(req, res) {
 //res.send('NOT IMPLEMENTED: Onion list');
 //};
 // for a specific Onion.
-exports.onion_detail = function(req, res) {
-res.send('NOT IMPLEMENTED: Onion detail: ' + req.params.id);
-};
+//exports.onion_detail = function(req, res) {
+//res.send('NOT IMPLEMENTED: Onion detail: ' + req.params.id);
+//};
 // Handle Onion create on POST.
 exports.onion_create_post = function(req, res) {
 res.send('NOT IMPLEMENTED: Onion create POST');
@@ -63,5 +63,17 @@ exports.onion_create_post = async function(req, res) {
     catch(err){
     res.status(500);
     res.send(`{"error": ${err}}`);
+    }
+    };
+
+// for a specific Costume.
+exports.onion_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+    result = await onion.findById( req.params.id)
+    res.send(result)
+    } catch (error) {
+    res.status(500)
+    res.send(`{"error": document for id ${req.params.id} not found`);
     }
     };
