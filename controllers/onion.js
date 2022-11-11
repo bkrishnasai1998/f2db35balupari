@@ -41,9 +41,9 @@ exports.onion_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: Onion delete DELETE ' + req.params.id);
 };
 // Handle Onion update form on PUT.
-exports.onion_update_put = function(req, res) {
-res.send('NOT IMPLEMENTED: Onion update PUT' + req.params.id);
-};
+//exports.onion_update_put = function(req, res) {
+//res.send('NOT IMPLEMENTED: Onion update PUT' + req.params.id);
+//};
 
 // Handle Costume create on POST.
 exports.onion_create_post = async function(req, res) {
@@ -75,5 +75,26 @@ exports.onion_detail = async function(req, res) {
     } catch (error) {
     res.status(500)
     res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+    };
+
+/// Handle Costume update form on PUT.
+exports.onion_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body
+    ${JSON.stringify(req.body)}`)
+    try {
+    let toUpdate = await onion.findById( req.params.id)
+    // Do updates of properties
+    if(req.body.onion_weight)
+    toUpdate.onion_weight = req.body.onion_weight;
+    if(req.body.onion_price) toUpdate.onion_price = req.body.onion_price;
+    if(req.body.onion_color) toUpdate.onion_color = req.body.onion_color;
+    let result = await toUpdate.save();
+    console.log("Success " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": ${err}: Update for id ${req.params.id}
+    failed`);
     }
     };
