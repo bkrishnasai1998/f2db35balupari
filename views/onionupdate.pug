@@ -1,0 +1,42 @@
+extends layout
+block content
+  h1= title
+  if (toShow == null) 
+    h2 No instance to update 
+  else
+  - let onionid = toShow._id
+  - let onion_weight = toShow.onion_weight
+  - let onion_price = toShow.onion_price
+  - let onion_color = toShow.onion_color
+  - let actionid = "/resource/onions/" + onionid
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{onionid} 
+  form(id='onionForm', action=actionid, method="PUT")
+   div.form-group
+    label.onionAttr(for='onion_weight') Onion Weight
+    input#onion_weight(type='text', name='onion_weight')
+   div.form-group
+    label.onionAttr(for='onion_price') Onion price
+    input#onion_price(type='number', name='onion_price')
+   div.form-group
+    label.onionAttr(for='onion_color') Onion Color
+    input#onion_color(type='text', name='onion_color')
+   input(type="submit")
+  script.
+    document.forms['onionForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+       method: 'PUT',
+       body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+       return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+       alert("Save succeded")
+       // TODO handle body
+      }).catch((error) => {
+       // TODO handle error
+       alert("Save failed " + error )
+      });
+     });
