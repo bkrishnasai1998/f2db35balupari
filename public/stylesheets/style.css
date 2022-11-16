@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+.onionAttr {
+  background-color: aquamarine;
+  width: 120px;
+}
