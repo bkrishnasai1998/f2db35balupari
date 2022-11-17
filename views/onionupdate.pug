@@ -4,15 +4,15 @@ block content
   if (toShow == null) 
     h2 No instance to update 
   else
-  - let onionid = toShow._id
-  - let onion_weight = toShow.onion_weight
-  - let onion_price = toShow.onion_price
-  - let onion_color = toShow.onion_color
-  - let actionid = "/resource/onions/" + onionid
-  div.row(class='mb-2') 
+   - let onionid = toShow._id
+   - let onion_weight = toShow.onion_weight
+   - let onion_price = toShow.onion_price
+   - let onion_color = toShow.onion_color
+   - let actionid = "/resource/onions/" + onionid
+   div.row(class='mb-2') 
     div.mr-1 ID is 
     div #{onionid} 
-  form(id='onionForm', action=actionid, method="PUT")
+   form(id='onionForm', action=actionid, method="PUT")
    div.form-group
     label.onionAttr(for='onion_weight') Onion Weight
     input#onion_weight(type='text', name='onion_weight')

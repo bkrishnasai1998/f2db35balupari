@@ -1,20 +1,23 @@
 extends layout
 block content
  h1= title
- - let onionid = toShow._id
- - let onion_weight = toShow.onion_weight
- - let onion_price = toShow.onion_price
- - let onion_color = toShow.onion_color
- div
+ if (toShow == null) 
+    h2 No instance to view 
+ else 
+  - let onionid = toShow._id
+  - let onion_weight = toShow.onion_weight
+  - let onion_price = toShow.onion_price
+  - let onion_color = toShow.onion_color
+  div
     div.row
-     div(class='onionAttr mr-3') Onion ID is:
+     div(class='onionAttr2 mr-3') Onion ID is:
      div #{onionid}
     div.row
-     div(class='onionAttr mr-3') Onion Weight is:
+     div(class='onionAttr2 mr-3') Onion Weight is:
      div #{onion_weight}
     div.row
-     div(class='onionAttr mr-3') Onion Price is:
+     div(class='onionAttr2 mr-3') Onion Price is:
      div #{onion_price}
     div.row
-     div(class='onionAttr mr-3') Onion Color is:
+     div(class='onionAttr2 mr-3') Onion Color is:
      div #{onion_color}
