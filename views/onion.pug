@@ -4,12 +4,14 @@ block content
   h1= title
   - let onion=results 
   div(class="container-fluid")
-  div(class="row")
-   each on,index in onion
-    div(class="col-sm-2" onclick =`buy(${index})`) #{on.onion_weight}, #{on.onion_price}, #{on.onion_color}
+  div(class="row m-1")
+   each on in onion
+    - let destination = `dispatch(\"/onion/update?id=${on._id}\")`
+    div(class="row-sm-2", class="m-1") Item #{on.onion_weight}, #{on.onion_price}, #{on.onion_color}
+     button.btn( class="btn-primary ml-1", onclick= destination) Update
 
    script.
-    function buy(i)
+    function dispatch(path)
     {
-      alert(`You purchased Item ${i+1}`)
+      window.location.href=path
     } 
