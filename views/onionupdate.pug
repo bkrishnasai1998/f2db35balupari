@@ -26,7 +26,6 @@ block content
   script.
     document.forms['onionForm'].addEventListener('submit', (event) => {
       event.preventDefault();
-      // TODO do something here to show user that form is being submitted
       fetch(event.target.action, {
        method: 'PUT',
        body: new URLSearchParams(new FormData(event.target)) // event.target is the form

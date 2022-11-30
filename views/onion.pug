@@ -3,12 +3,18 @@ extends layout
 block content
   h1= title
   - let onion=results 
+  - let oc = `dispatch(\"/onion/create\")`
+  button.btn( class="btn-primary ml-1", onclick= oc) Create 
   div(class="container-fluid")
   div(class="row m-1")
    each on in onion
     - let destination = `dispatch(\"/onion/update?id=${on._id}\")`
+    - let ov = `dispatch(\"/onion/detail?id=${on._id}\")`
+    - let od = `dispatch(\"/onion/delete?id=${on._id}\")`
     div(class="row-sm-2", class="m-1") Item #{on.onion_weight}, #{on.onion_price}, #{on.onion_color}
      button.btn( class="btn-primary ml-1", onclick= destination) Update
+     button.btn( class="btn-primary ml-1", onclick= ov) View onion
+     button.btn( class="btn-primary ml-1", onclick= od) Update onion
 
    script.
     function dispatch(path)

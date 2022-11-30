@@ -20,12 +20,12 @@ router.get('/', onion_controlers.onion_view_all_Page);
 router.get('/detail', onion_controlers.onion_view_one_Page);
 
 /* GET create onion page */
-router.get('/create', onion_controlers.onion_create_Page);
+router.get('/create',secured, onion_controlers.onion_create_Page);
 
 /* GET create update page */
-router.get('/update', secured, onion_controlers.onion_update_Page);
+router.get('/update',secured, onion_controlers.onion_update_Page);
 
 /* GET delete onion page */
-router.get('/delete', onion_controlers.onion_delete_Page);
+router.get('/delete',secured, onion_controlers.onion_delete_Page);
 
 module.exports = router;
